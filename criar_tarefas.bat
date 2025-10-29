@@ -24,6 +24,15 @@ if errorlevel 1 (
     echo BuiltFullSoap4 ja esta instalado, pulando instalacao...
 )
 
+:: Verifica se o colorama está instalado
+pip show colorama >nul 2>&1
+if errorlevel 1 (
+    echo colorama nao encontrado, instalando...
+    pip install colorama --quiet --index-url %REPO_URL% --trusted-host %TRUSTED_HOST%
+) else (
+    echo colorama ja esta instalado, pulando instalacao...
+)
+
 cls
 echo ==============================================
 echo =           INSIRA O NUMERO DO IB            =
